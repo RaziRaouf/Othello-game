@@ -12,6 +12,7 @@ public class Test extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private FacileIA hardAi;
+    public final int DEPTH=8;
     public Test() {
         super("Othello");
         game = new OthelloGame();
@@ -25,7 +26,8 @@ public class Test extends JFrame {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
             	  JButton button = new JButton();
-                  button.setPreferredSize(new Dimension(60, 60)); // Taille des boutons
+                  button.setPreferredSize(new Dimension(50, 50));// Taille des boutons
+                  button.setBackground(Color.GRAY);
                   button.addActionListener(new ButtonClickListener(i, j));
                   buttons[i][j] = button;
                   boardPanel.add(button);
@@ -50,10 +52,15 @@ public class Test extends JFrame {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 char token = grid[i][j];
-                buttons[i][j].setText(String.valueOf(token));
+                buttons[i][j].removeAll(); // Supprimer tout contenu existant
+                if (token == 'b') {
+                    buttons[i][j].add(new OthelloPiece(Color.BLACK)); // Ajouter un pion noir
+                } else if (token == 'w') {
+                    buttons[i][j].add(new OthelloPiece(Color.WHITE)); // Ajouter un pion blanc
+                }
+                buttons[i][j].revalidate(); // Mettre à jour l'affichage du bouton
             }
         }
-     // JPanel countPanel = new JPanel();
         whiteCountLabel.setText("White Count: " + game.getBoard().countWhite());
         blackCountLabel.setText("Black Count: " + game.getBoard().countBlack());
     }
@@ -76,7 +83,7 @@ public class Test extends JFrame {
             if (game.getBoard().getValidMoves(currentPlayer).isEmpty()) {
                 // Passer au tour de l'IA
                 OthelloPlayer opponent = (currentPlayer == game.getPlayer1()) ? game.getPlayer2() : game.getPlayer1();
-                int[] aiMove = hardAi.getBestMove(game.getBoard(), game, opponent, 8);
+                int[] aiMove = hardAi.getBestMove(game.getBoard(),game, opponent,DEPTH);
                 game.getBoard().makeMove(aiMove[0], aiMove[1], opponent);
                 updateBoardDisplay(); // Mettre à jour l'affichage du plateau après le mouvement de l'IA
 
@@ -104,7 +111,7 @@ public class Test extends JFrame {
 
                     // Passer au tour de l'IA
                     OthelloPlayer opponent = (currentPlayer == game.getPlayer1()) ? game.getPlayer2() : game.getPlayer1();
-                    int[] aiMove = hardAi.getBestMove(game.getBoard(), game, opponent, 8);
+                    int[] aiMove = hardAi.getBestMove(game.getBoard(),game, opponent,DEPTH);
                     game.getBoard().makeMove(aiMove[0], aiMove[1], opponent);
                     updateBoardDisplay(); // Mettre à jour l'affichage du plateau après le mouvement de l'IA
 
