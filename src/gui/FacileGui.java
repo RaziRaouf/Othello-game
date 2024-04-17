@@ -12,7 +12,7 @@ public class FacileGui extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private FacileIA facileIa;
-    private int DEPTH=4;
+    private final int DEPTH=4;
     public FacileGui() {
         super("Othello");
         game = new OthelloGame();
@@ -154,7 +154,7 @@ public class FacileGui extends JFrame {
     
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(RandomGui::new);
+        SwingUtilities.invokeLater(FacileGui::new);
     }
 }
 
