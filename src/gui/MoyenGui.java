@@ -12,7 +12,7 @@ public class MoyenGui extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private MoyenAI moyenAi;
-    private int DEPTH=4;
+    private final int DEPTH=4;
     public MoyenGui() {
         super("Othello");
         game = new OthelloGame();
@@ -154,7 +154,7 @@ public class MoyenGui extends JFrame {
     
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(RandomGui::new);
+        SwingUtilities.invokeLater(MoyenGui::new);
     }
 }
 
