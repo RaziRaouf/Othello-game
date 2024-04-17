@@ -1,4 +1,4 @@
-package gui;
+ckage gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +12,6 @@ public class Test extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private FacileIA facileAi;
-    private RandomIA randomAI;
-    private HardAI hardAi;
-    private ProAI proAI;
-    private MoyenAI moyenAi;
-    private StabiltyAI satb;
-    private FlipAI flip;
     public final int DEPTH=8;
     public Test() {
         super("Othello");
@@ -25,11 +19,6 @@ public class Test extends JFrame {
         buttons = new JButton[8][8];
         whiteCountLabel = new JLabel("White Count: ");
         blackCountLabel = new JLabel("Black Count: ");
-        proAI=new ProAI();
-        moyenAi=new MoyenAI();
-        hardAi=new HardAI();
-        satb=new StabiltyAI();
-        flip=new FlipAI();
         facileAi=new FacileIA();
         JPanel boardPanel = new JPanel(new GridLayout(8, 8));
 
@@ -107,27 +96,32 @@ public class Test extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-        	OthelloPlayer currentPlayer = game.getCurrentPlayer();
+            OthelloPlayer currentPlayer = game.getCurrentPlayer();
             resetButtonColors();
-            
             // Vérifier si le joueur actuel a des coups valides
             if (game.getBoard().getValidMoves(currentPlayer).isEmpty()) {
                 // Passer au tour de l'IA
                 OthelloPlayer opponent = (currentPlayer == game.getPlayer1()) ? game.getPlayer2() : game.getPlayer1();
-                int[] aiMove = facileAi.getBestMove(game.getBoard(), game, opponent, DEPTH);
+                int[] aiMove =facileAi.getBestMove(game.getBoard(),game, opponent,DEPTH);
+               
                 game.getBoard().makeMove(aiMove[0], aiMove[1], opponent);
-                updateBoardDisplay();
+                updateBoardDisplay(); // Mettre à jour l'affichage du plateau après le mouvement de l'IA
+
                 // Vérifier si le jeu est terminé après le tour de l'IA
                 if (game.isGameOver()) {
                     // Afficher un message de fin de jeu et terminer le jeu
                     JOptionPane.showMessageDialog(null, "Game Over!");
                     return;
                 }
+                
+                // Mettre à jour le currentPlayer après le tour de l'IA
+                currentPlayer = opponent;
             } else {
                 // Si le joueur a des coups valides, procéder normalement au tour du joueur
                 if (game.getBoard().isValidMove(row, col, currentPlayer)) {
                     game.getBoard().makeMove(row, col, currentPlayer);
-                    
+                    updateBoardDisplay(); // Mettre à jour l'affichage du plateau après le mouvement du joueur
+
                     // Vérifier si le jeu est terminé
                     if (game.isGameOver()) {
                         // Afficher un message de fin de jeu et terminer le jeu
@@ -137,9 +131,11 @@ public class Test extends JFrame {
 
                     // Passer au tour de l'IA
                     OthelloPlayer opponent = (currentPlayer == game.getPlayer1()) ? game.getPlayer2() : game.getPlayer1();
-                    int[] aiMove = facileAi.getBestMove(game.getBoard(), game, opponent, DEPTH);
+                    int[] aiMove = facileAi.getBestMove(game.getBoard(),game, opponent,DEPTH);
+                    
                     game.getBoard().makeMove(aiMove[0], aiMove[1], opponent);
-                    updateBoardDisplay();
+                    updateBoardDisplay(); // Mettre à jour l'affichage du plateau après le mouvement de l'IA
+
                     // Vérifier si le jeu est terminé après le tour de l'IA
                     if (game.isGameOver()) {
                         // Afficher un message de fin de jeu et terminer le jeu
@@ -150,12 +146,10 @@ public class Test extends JFrame {
                     JOptionPane.showMessageDialog(null, "Invalid move. Try again.");
                 }
             }
-            
-            // Mettre à jour les coups valides après chaque coup
             highlightValidMoves();
-            }
         }
-
+        
+    }
     
 
     public static void main(String[] args) {
