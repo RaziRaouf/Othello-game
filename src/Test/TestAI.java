@@ -1,16 +1,19 @@
 package Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import AI.*;
 import othelloGame.*;
 
 public class TestAI {
     public static void main(String[] args) {
-        testMatch(new ProAI(),new FlipAI());
+        testMatch(new ProAI(),new StabiltyAI());
     }
     public static void testMatch(AIPlayer aiPlayer1,AIPlayer aiPlayer2) {
-        int[] depths = {1,2,3,4,6,8};
+        int[] depths = {1,2,3,4,6};
         
         // Initialisation des compteurs de victoires pour chaque IA
         int[] aiPlayer1Wins = new int[depths.length];
