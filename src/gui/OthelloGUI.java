@@ -8,7 +8,9 @@ import othelloGame.OthelloPlayer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * Represents a graphical user interface (GUI) for the Othello game with an easy AI opponent.
+ */
 public class OthelloGUI extends JFrame {
     private OthelloGame game;
     private JButton[][] buttons;

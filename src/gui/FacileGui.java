@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+/**
+ * Represents a graphical user interface (GUI) for the Othello game with an easy AI opponent.
+ */
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +15,7 @@ public class FacileGui extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private FacileIA facileIa;
-    private final int DEPTH=4;
+    private int DEPTH=1;
     public FacileGui() {
         super("Othello");
         game = new OthelloGame();

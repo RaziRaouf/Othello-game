@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+/**
+ * Represents a graphical user interface (GUI) for the Othello game with an HardAI opponent.
+ */
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +15,7 @@ public class HardGui extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private HardAI hardIa;
-    private final int DEPTH=8;
+    private final int DEPTH=6;
     public HardGui() {
         super("Othello");
         game = new OthelloGame();

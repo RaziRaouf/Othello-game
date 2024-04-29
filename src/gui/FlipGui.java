@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+/**
+ * Represents a graphical user interface (GUI) for the Othello game with an FlipAI opponent.
+ */
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +15,7 @@ public class FlipGui extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private FlipAI flipIa;
-    private int DEPTH=4;
+    private int DEPTH=6;
     public FlipGui() {
         super("Othello");
         game = new OthelloGame();

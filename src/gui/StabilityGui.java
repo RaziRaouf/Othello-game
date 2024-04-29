@@ -12,7 +12,7 @@ public class StabilityGui extends JFrame {
     private JLabel whiteCountLabel;
     private JLabel blackCountLabel;
     private StabiltyAI stab;
-    private int DEPTH=4;
+    private int DEPTH=6;
     public StabilityGui() {
         super("Othello");
         game = new OthelloGame();

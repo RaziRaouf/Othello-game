@@ -3,6 +3,9 @@ package othelloGame;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Represents the Othello game and its functionalities.
+ */
 public class OthelloGame {
     private OthelloBoard board;
     private OthelloPlayer player1;
@@ -10,6 +13,9 @@ public class OthelloGame {
     private OthelloPlayer currentPlayer;
     private Scanner scanner;
 
+    /**
+     * Constructs an instance of the Othello game.
+     */
     public OthelloGame() {
         board = new OthelloBoard();
         player1 = new OthelloPlayer('b');
@@ -17,9 +23,12 @@ public class OthelloGame {
         currentPlayer = player1;
         scanner = new Scanner(System.in);
     }
+
+    /**
+     * Starts the Othello game.
+     */
     public void startGame() {
-    
-    System.out.println("Welcome to Othello!");
+        System.out.println("Welcome to Othello!");
 
         while (!isGameOver()) {
             board.printBoard();
@@ -52,34 +61,76 @@ public class OthelloGame {
         System.out.println("Game Over!!");
     }
 
+    /**
+     * Gets a player move from the user.
+     *
+     * @return An array representing the row and column of the move.
+     */
     private int[] getPlayerMove() {
         System.out.print("Enter row and column (0-7) separated by space: ");
         int row = scanner.nextInt();
         int col = scanner.nextInt();
         return new int[]{row, col};
     }
+
+    /**
+     * Checks if the game is over.
+     *
+     * @return True if the game is over, false otherwise.
+     */
     public boolean isGameOver() {
         return board.getValidMoves(player1).isEmpty() && board.getValidMoves(player2).isEmpty();
     }
-	public OthelloBoard getBoard() {
-		return board;
-	}
-	public OthelloPlayer getCurrentPlayer() {
-		return currentPlayer;
-	}
-	public OthelloPlayer getPlayer1() {
-		return player1;
-	}
-	public OthelloPlayer getPlayer2() {
-		return player2;
-	}
-	public void setCurrentPlayer(OthelloPlayer currentPlayer) {
-	    this.currentPlayer = currentPlayer;
 
+    /**
+     * Retrieves the game board.
+     *
+     * @return The game board.
+     */
+    public OthelloBoard getBoard() {
+        return board;
+    }
 
-}
-	
-	public void endTurn() {
-	    currentPlayer = (currentPlayer == player1) ? player2 : player1;
-	}
+    /**
+     * Retrieves the current player.
+     *
+     * @return The current player.
+     */
+    public OthelloPlayer getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    /**
+     * Retrieves player 1.
+     *
+     * @return Player 1.
+     */
+    public OthelloPlayer getPlayer1() {
+        return player1;
+    }
+
+    /**
+     * Retrieves player 2.
+     *
+     * @return Player 2.
+     */
+    public OthelloPlayer getPlayer2() {
+        return player2;
+    }
+
+    /**
+     * Sets the current player.
+     *
+     * @param currentPlayer The player to set as the current player.
+     */
+    public void setCurrentPlayer(OthelloPlayer currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    /**
+     * Ends the current turn and switches to the other player.
+     */
+    public void endTurn() {
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
+    }
 }

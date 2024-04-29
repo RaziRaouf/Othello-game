@@ -6,8 +6,17 @@ import othelloGame.AIPlayer;
 import othelloGame.OthelloBoard;
 import othelloGame.OthelloGame;
 import othelloGame.OthelloPlayer;
-
+/**
+ * Represents an medium AI player for Othello.
+ */
 public class MoyenAI implements AIPlayer{
+	 /**
+     * Evaluates the current state of the Othello board for the given player.
+     * 
+     * @param board The current Othello board.
+     * @param player The player for whom to evaluate the board.
+     * @return The evaluation score.
+     */
 private static int evaluate(OthelloBoard board,OthelloPlayer player) {
 	int playerMobility=board.getValidMoves(player).size();
 	OthelloPlayer opponent;
@@ -20,6 +29,17 @@ private static int evaluate(OthelloBoard board,OthelloPlayer player) {
 	int opponentMobility=board.getValidMoves(opponent).size();
 	return playerMobility-opponentMobility;
 }
+/**
+ * Implements the alpha-beta pruning algorithm to find the best move for the AI player.
+ * 
+ * @param ob     The current Othello board.
+ * @param og     The current Othello game.
+ * @param op     The AI player making the move.
+ * @param depth  The depth of the search tree.
+ * @param alpha  The alpha value.
+ * @param beta   The beta value.
+ * @return The evaluation score.
+ */
 public static int alphaBeta(OthelloBoard ob, OthelloGame og,OthelloPlayer op, int depth, int alpha, int beta) {
     if (depth == 0 || og.isGameOver()) {
         return evaluate(ob,op);
@@ -57,6 +77,15 @@ public static int alphaBeta(OthelloBoard ob, OthelloGame og,OthelloPlayer op, in
         return beta;
     }
 }
+/**
+ * Finds the best move for the AI player using the alpha-beta pruning algorithm.
+ * 
+ * @param board  The current Othello board.
+ * @param og     The current Othello game.
+ * @param player The AI player making the move.
+ * @param depth  The depth of the search tree.
+ * @return An array containing the row and column of the best move.
+ */
 public int[] getBestMove(OthelloBoard board,OthelloGame og, OthelloPlayer player, int depth) {
     List<int[]> validMoves = board.getValidMoves(player);
     int bestValue = Integer.MIN_VALUE;
