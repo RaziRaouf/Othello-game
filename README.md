@@ -50,7 +50,7 @@ Le jeu se déroule sur un plateau de 8 cases par 8, représenté par un quadrill
 3. **Retournement des pions**: Pour retourner des pions adverses, un pion doit être placé de manière à encadrer une ligne de pions adverses entre deux pions de sa propre couleur déjà placés sur le plateau. Tous les pions adverses de cette ligne sont alors retournés et deviennent des pions de la couleur du joueur qui a effectué le placement.
 4. **Fin du tour**: Un tour se termine lorsque le joueur a placé un pion ou lorsqu’il n’a plus de coups possibles. Dans ce dernier cas, le tour passe au joueur suivant.
 
-![Déroulement du jeu](#)
+![Déroulement du jeu](C:\Users\mouha\OneDrive - Université de Paris\Pictures\Screenshots\rapportIA)
 
 ## Fin de partie
 
