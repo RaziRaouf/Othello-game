@@ -64,8 +64,7 @@ le placement.
 Un tour se termine lorsque le joueur a placé un pion ou lorsqu’il n’a
 plus de coups possibles. Dans ce dernier cas, le tour passe au joueur suivant.
 | ![Image 1](https://github.com/RaziRaouf/Othello-game/blob/main/Capture%20d'%C3%A9cran%202024-04-29%20134232.png) | ![Image 2](https://github.com/RaziRaouf/Othello-game/blob/main/Capture%20d'%C3%A9cran%202024-04-29%20134314.png) | ![Image 3](https://github.com/RaziRaouf/Othello-game/blob/main/Capture%20d'%C3%A9cran%202024-04-29%20134352.png) |
-|:---------------------------------------------------------------------------------------:|
-|Déroulement du jeu|
+
 
 ## Fin de partie
 La partie se termine dans deux cas :
