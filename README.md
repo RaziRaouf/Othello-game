@@ -260,15 +260,6 @@ Le jeu alterne automatiquement entre les tours du joueur
 humain et de l’adversaire informatique. Lorsque le joueur humain ne peut pas
 effectuer de mouvement valide, c’est au tour de l’IA de jouer.
 
-## 🛠️ Prérequis <a name = "prerequisites"></a>
-
-Assurez-vous d'avoir les éléments suivants installés :
-
-- Python 3.7 ou supérieur
-- OpenCV
-- NumPy
-- Matplotlib
-
 ## 🏁 Bilan
 
 Ce projet a permis de développer un jeu d’Othello fonctionnel avec une interface
